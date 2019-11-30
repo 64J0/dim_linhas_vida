@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Linha de vida</title>
+	<meta charset="UTF-8" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link rel="icon" href="http://fullengenharia.com.br/wp-content/uploads/2017/04/fullE_tcon.png" type="image/png">
+
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+	<link rel="stylesheet" type="text/css" href="src/styles.css">
+	
+
+</head>
+
+<body>
+	<header>
+		<h1>
+			Dimensionamento de linha de vida
+		</h1>
+	</header>
+
+	<div>
+		<h2>Dados de entrada</h2>
+		<table class="table">
+			<!-- 2 Peso do corpo -->
+			<tr>
+				<td>
+					<p>Massa do corpo (m):</p>
+				</td>
+				<td>
+					<input type="number" placeholder="Em quilos" id="massa" class="entrada">
+				</td>
+				<td>
+					<p>kg</p>
+				</td>
+			</tr>
+			<!-- 3 Vão -->
+			<tr>
+				<td>
+					<p>
+						Vão (L)
+					</p>
+				</td>
+				<td>
+					<input type="number" placeholder="Em metros" id="vao" class="entrada">
+				</td>
+				<td>
+					<p>
+						m
+					</p>
+				</td>
+			</tr>
+			<!-- 4 Diãmetro do cabo -->
+			<tr>
+				<td>
+					<p>Diâmetro do cabo (d):</p>
+				</td>
+				<td>
+					<input type="number" placeholder="Em milimetros" id="diametro" class="entrada">
+				</td>
+				<td>
+					<p>
+						mm
+					</p>
+				</td>
+			</tr>
+			<!-- 5 Força de ruptura do cabo -->
+			<tr>
+				<td>
+					<p>
+						Força de ruptura do cabo (fu):
+					</p>
+				</td>
+				<td>
+					<input type="number" placeholder="Em kgf" id="fu" class="entrada">
+				</td>
+				<td>
+					<p>
+						kgf
+					</p>
+				</td>
+			</tr>
+			<!-- 6 Número de pessoas -->
+			<tr>
+				<td>
+					<p>
+						Número de pessoas (n):
+					</p>
+				</td>
+				<td>
+					<input type="number" placeholder="-" id="num_pessoas" class="entrada">
+				</td>
+				<td>
+					<p>
+						n
+					</p>
+				</td>
+			</tr>
+			<!-- 7 Comprimento do talabarte -->
+			<tr>
+				<td>
+					<p>
+						Comprimento do talabarte (a):
+					</p>
+				</td>
+				<td>
+					<input type="number" placeholder="Em metros" id="a" class="entrada">
+				</td>
+				<td>
+					<p>
+						m
+					</p>
+				</td>
+			</tr>
+			<!-- 8 Comprimento abs. estendido -->
+			<tr>
+				<td>
+					<p>
+						Comprimento abs. estendido (c):
+					</p>
+				</td>
+				<td>
+					<input type="number" placeholder="Em metros" id="c" class="entrada">
+				</td>
+				<td>
+					<p>
+						m
+					</p>
+				</td>
+			</tr>
+			<!-- 9 Uso de trava-quedas retrátil -->
+			<tr>
+				<td>
+					<p>
+						Uso de trava-quedas retrátil (A1):
+					</p>
+				</td>
+				<td>
+					<input type="number" placeholder="Em metros" id="A1" class="entrada">
+				</td>
+				<td>
+					<p>
+						m
+					</p>
+				</td>
+			</tr>
+			<!-- 10 Espaço de frenagem trava-quedas retrátil -->
+			<tr>
+				<td>
+					<p>
+						Espaço de frenagem trava-quedas retrátil (B1):
+					</p>
+				</td>
+				<td>
+					<input type="number" placeholder="Em metros" id="B1" class="entrada">
+				</td>
+				<td>
+					<p>
+						m
+					</p>
+				</td>
+			</tr>
+			<!-- 11 Distância posição recolhida a posição de trabalho -->
+			<tr>
+				<td>
+					<p>
+						Distância posição recolhida a posição de trabalho (b1):
+					</p>
+				</td>
+				<td>
+					<input type="number" placeholder="Em metros" id="b1" class="entrada">
+				</td>
+				<td>
+					<p>
+						m
+					</p>
+				</td>
+			</tr>
+			<!-- 12 Módulo de elasticidade do catálogo -->
+			<tr>
+				<td>
+					<p>
+						Módulo de elasticidade (Catálogo):
+					</p>
+				</td>
+				<td>
+					<input type="number" placeholder="Em kgf/mm^2" id="E" class="entrada">
+				</td>
+				<td>
+					<p>
+						kgf/mm^2
+					</p>
+				</td>
+			</tr>
+			<!-- 13 Fator de mult. p/ determinação da área da seção transversal -->
+			<tr>
+				<td>
+					<p>
+						Fator de mult. p/ determinação da área da seção transversal (Catálogo):
+					</p>
+				</td>
+				<td>
+					<input type="number" placeholder="Adimensional" id="fator" class="entrada">
+				</td>
+				<td>
+					<p>
+						-
+					</p>
+				</td>
+			</tr>
+			<!-- 14 Chute inicial da força no cabo -->
+			<tr>
+				<td>
+					<p>
+						Chute inicial da força no cabo:
+					</p>
+				</td>
+				<td>
+					<input type="number" placeholder="Em kgf" id="chute_inicial" disabled="disabled" value="1500">
+				</td>
+				<td>
+					<p>
+						kgf
+					</p>
+				</td>
+			</tr>
+			<!-- 19 Flecha -->
+			<tr>
+					<td>
+						<p>
+							Flecha (%)
+						</p>
+					</td>
+					<td>
+						<input type="number" placeholder="Ex: 3% então 0.03" id="flecha" class="entrada">
+					</td>
+					<td>
+						<p>
+							-
+						</p>
+					</td>
+			</tr>
+		</table>
+
+		<button id="calcular" type="button" onclick="gerencia()">Calcular!</button>
+	</div>
+
+	<div id="resultados">
+		<h2>Cálculos</h2>
+		<table class="table table-striped">
+			<!-- 20 Comprimento do cabo -->
+			<tr>
+				<td>
+					<p>
+						Comprimento do cabo:
+					</p>
+				</td>
+				<td>
+					<p id="comprimento_cabo">
+
+					</p>
+				</td>
+				<td>
+					<p>
+						m
+					</p>
+				</td>
+			</tr>
+			<!-- 21 DL alongamento cabo -->
+			<tr>
+				<td>
+					<p>
+						DL alongamento cabo (&Delta;L)
+					</p>
+				</td>
+				<td>
+					<p id="alongamento_cabo">
+
+					</p>
+				</td>
+				<td>
+					<p>
+						mm
+					</p>
+				</td>
+			</tr>
+			<!-- 22 Flecha inicial parabólica -->
+			<tr>
+				<td>
+					<p>
+						Flecha inicial parabólica (f1):
+					</p>
+				</td>
+				<td>
+					<p id="flecha_inicial">
+
+					</p>
+				</td>
+				<td>
+					<p>
+						mm
+					</p>
+				</td>
+			</tr>
+			<!-- 23 Flecha inicial cabo reto -->
+			<tr>
+				<td>
+					<p>
+						Flecha inicial cabo reto (f2):
+					</p>
+				</td>
+				<td>
+					<p id="flecha_cabo_reto">
+
+					</p>
+				</td>
+				<td>
+					<p>
+						mm
+					</p>
+				</td>
+			</tr>
+			<!-- 24 Flecha total carga dinâmica -->
+			<tr>
+				<td>
+					<p>
+						Flecha total carga dinâmica (f3):
+					</p>
+				</td>
+				<td>
+					<p id="flecha_total">
+
+					</p>
+				</td>
+				<td>
+					<p>
+						mm
+					</p>
+				</td>
+			</tr>
+			<!-- 25 Distância de frenagem -->
+			<tr>
+				<td>
+					<p>
+						Distância de frenagem:
+					</p>
+				</td>
+				<td>
+					<p id="dist_frenagem">
+
+					</p>
+				</td>
+				<td>
+					<p>
+						mm
+					</p>
+				</td>
+			</tr>
+			<!-- 26 Carga corpo -->
+			<tr>
+				<td>
+					<p>
+						Carga corpo (P):
+					</p>
+				</td>
+				<td>
+					<p id="carga_corpo">
+
+					</p>
+				</td>
+				<td>
+					<p>
+						kgf
+					</p>
+				</td>
+			</tr>
+			<!-- 27 Força no cabo -->
+			<tr>
+				<td>
+					<p>
+						Força no cabo (T1):
+					</p>
+				</td>
+				<td>
+					<p id="forca_cabo">
+
+					</p>
+				</td>
+				<td>
+					<p>
+						kgf
+					</p>
+				</td>
+			</tr>
+			<!-- 28 Força admissível -->
+			<tr>
+				<td>
+					<p>
+						Força admissível (Fadm):
+					</p>
+				</td>
+				<td>
+					<p id = "B28">
+
+					</p>
+				</td>
+				<td>
+					<p>
+						kgf
+					</p>
+				</td>
+			</tr>
+			<!-- 29 Número de pessoas -->
+			<tr>
+				<td>
+					<p>
+						Número de pessoas (n):
+					</p>
+				</td>
+				<td>
+					<p id="B29">
+
+					</p>
+				</td>
+				<td>
+					<p>
+						n
+					</p>
+				</td>
+			</tr>
+			<!-- 30 Hmin cabo/piso - talabarte -->
+			<tr>
+				<td>
+					<p>
+						Hmin cabo/piso - talabarte (ZLQ1):
+					</p>
+				</td>
+				<td>
+					<p id="B30">
+
+					</p>
+				</td>
+				<td>
+					<p>
+						m
+					</p>
+				</td>
+			</tr>
+			<!-- 31 Hmin cabo/piso - trava-quedas -->
+			<tr>
+				<td>
+					<p>
+						Hmin cabo/piso - trava-quedas (ZLQ2):
+					</p>
+				</td>
+				<td>
+					<p id="B31">
+
+					</p>
+				</td>
+				<td>
+					<p>
+						m
+					</p>
+				</td>
+			</tr>
+			<!-- 32 Dist. piso trab/piso abaixo p/ trava-quedas -->
+			<tr>
+				<td>
+					<p>
+						Dist. piso trab/piso abaixo p/ trava-quedas (Hp):
+					</p>
+				</td>
+				<td>
+					<p id="B32">
+
+					</p>
+				</td>
+				<td>
+					<p>
+						m
+					</p>
+				</td>
+			</tr>
+			<!-- 33 Coeficiente de utilização do cabo -->
+			<tr>
+				<td>
+					<p>
+						Coeficiente de utilização do cabo:
+					</p>
+				</td>
+				<td>
+					<P id="B33">
+
+					</P>
+				</td>
+				<td>
+					<p>
+						%
+					</p>
+				</td>
+			</tr>
+			<!-- 34 Fator de serviço do cabo -->
+			<tr class="table-danger">
+				<td>
+					<p>
+						Fator de serviço do cabo:
+					</p>
+				</td>
+				<td>
+					<p id="B34">
+
+					</p>
+				</td>
+			</tr>
+		</table>
+	</div>
+
+	<footer style="margin: 50px 0;">
+		<h4>
+			FULL Engenharia &reg
+		</h4>
+	</footer>
+
+	<script src="src/index.js">
+	</script>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</html>

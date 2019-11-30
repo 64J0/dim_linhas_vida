@@ -1,0 +1,12 @@
+document.getElementById('massa').innerHTML = 100;
+document.getElementById('vao').innerHTML = 6;
+document.getElementById('diametro').innerHTML = 9.52;
+document.getElementById('fu').innerHTML = 6100;
+document.getElementById('num_pessoas').innerHTML = 1;
+document.getElementById('a').innerHTML = 1.4;
+document.getElementById('c').innerHTML = 1.1;
+document.getElementById('A1').innerHTML = 0.9;
+document.getElementById('B1').innerHTML = 0.9;
+document.getElementById('b1').innerHTML = 1;
+document.getElementById('E').innerHTML = 9500;
+document.getElementById('fator').innerHTML = 0.396;
